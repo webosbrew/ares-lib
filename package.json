@@ -13,8 +13,16 @@
   "dependencies": {
   },
   "devDependencies": {
-    "@types/node": "^16.11.11",
+    "@types/node": ">=8.12.0",
     "@webosose/ares-cli": "^2.2.0",
     "ssh2": "^1.5.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webosbrew/ares-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webosbrew/ares-lib/issues"
+  },
+  "homepage": "https://github.com/webosbrew/ares-lib#readme"
 }
