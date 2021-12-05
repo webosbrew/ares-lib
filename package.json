@@ -1,0 +1,20 @@
+{
+  "name": "@webosbrew/ares-lib",
+  "version": "1.0.0",
+  "description": "Typed version for @webosose/ares-cli",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "@webosose/ares-cli": "^2.2.0",
+    "ssh2": "^1.5.0"
+  }
+}
