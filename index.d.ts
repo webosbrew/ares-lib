@@ -119,7 +119,7 @@ export interface RunningApp {
 }
 
 export namespace promises {
-
+    type AresSession = Session;
 
     import Dict = NodeJS.Dict;
 
@@ -137,6 +137,8 @@ export namespace promises {
 
     export class Session {
         readonly ssh: Client;
+
+        readonly delegate: AresSession;
 
         private constructor();
 

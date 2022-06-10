@@ -26,6 +26,7 @@ class Session {
      * @constructor
      */
     constructor(delegate) {
+        this.delegate = delegate;
         this.put = promisify(AresSession.prototype.put).bind(delegate);
         this.get = promisify(AresSession.prototype.get).bind(delegate);
         this.run = promisify(AresSession.prototype.run).bind(delegate);
@@ -39,6 +40,7 @@ class Session {
         this.getHostedAppServerPort = promisify(AresSession.prototype.getHostedAppServerPort).bind(delegate);
         this.end = AresSession.prototype.end.bind(delegate);
         this.getDevice = AresSession.prototype.getDevice.bind(delegate);
+        this.ssh = delegate['ssh'];
     }
 
     /**
