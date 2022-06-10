@@ -21,7 +21,7 @@ export class Resolver {
 export class Session {
     readonly ssh: Client;
 
-    constructor(target: string, next: (error: any) => void);
+    constructor(target: string, printTarget: string, next: (error: any) => void);
 
     run(cmd: string, stdin: Readable | null, stdout: RunOutput, stderr: RunOutput, next: (error: any, result: any) => void): void;
 

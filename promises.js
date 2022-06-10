@@ -46,7 +46,7 @@ class Session {
      */
     static create(target) {
         return new Promise((resolve, reject) => {
-            const session = new AresSession(target, (e) => {
+            const session = new AresSession(target, target, (e) => {
                 if (e) {
                     reject(e);
                 } else {
