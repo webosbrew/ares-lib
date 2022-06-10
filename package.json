@@ -1,6 +1,6 @@
 {
   "name": "@webosbrew/ares-lib",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Typed version for @webosose/ares-cli",
   "main": "index.js",
   "types": "index.d.ts",
@@ -10,8 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": ">=8.12.0",
     "@webosose/ares-cli": "=2.3.1",
