@@ -7,7 +7,6 @@ const AresLuna = require('@webosose/ares-cli/lib/base/luna');
 const AresLauncher = require('@webosose/ares-cli/lib/launch');
 const AresInstaller = require('@webosose/ares-cli/lib/install');
 const AresCliAppData = require('@webosose/ares-cli/lib/base/cli-appdata');
-const {Device} = require("./index");
 
 class Resolver {
     constructor() {
@@ -67,18 +66,18 @@ class CliAppData {
 
     constructor(delegate) {
         this.delegate = delegate;
-        this.getPath = promisify(delegate.getPath);
-        this.getAppDir = promisify(delegate.getAppDir);
-        this.getConfig = promisify(delegate.getConfig);
-        this.compareProfile = promisify(delegate.compareProfile);
-        this.getDeviceList = promisify(delegate.getDeviceList);
-        this.getCommandService = promisify(delegate.getCommandService);
-        this.setDeviceList = promisify(delegate.setDeviceList);
-        this.setConfig = promisify(delegate.setConfig);
-        this.setTemplate = promisify(delegate.setTemplate);
-        this.setKey = promisify(delegate.setKey);
-        this.setQuery = promisify(delegate.setQuery);
-        this.resetDeviceList = promisify(delegate.resetDeviceList);
+        this.getPath = promisify(delegate.getPath).bind(delegate);
+        this.getAppDir = promisify(delegate.getAppDir).bind(delegate);
+        this.getConfig = promisify(delegate.getConfig).bind(delegate);
+        this.compareProfile = promisify(delegate.compareProfile).bind(delegate);
+        this.getDeviceList = promisify(delegate.getDeviceList).bind(delegate);
+        this.getCommandService = promisify(delegate.getCommandService).bind(delegate);
+        this.setDeviceList = promisify(delegate.setDeviceList).bind(delegate);
+        this.setConfig = promisify(delegate.setConfig).bind(delegate);
+        this.setTemplate = promisify(delegate.setTemplate).bind(delegate);
+        this.setKey = promisify(delegate.setKey).bind(delegate);
+        this.setQuery = promisify(delegate.setQuery).bind(delegate);
+        this.resetDeviceList = promisify(delegate.resetDeviceList).bind(delegate);
     }
 
     static getInstance() {

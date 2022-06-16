@@ -6,7 +6,7 @@ const Launcher = require('@webosose/ares-cli/lib/launch');
 const novacomPromises = require('./promises');
 
 function CliAppData() {
-    return Cli.CliAppData();
+    return Cli();
 }
 
 module.exports = {
