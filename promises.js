@@ -109,5 +109,5 @@ const Launcher = {
 };
 
 module.exports = {
-    Resolver, Session, Luna, Installer, Launcher
+    Resolver, Session, Luna, Installer, Launcher, CliAppData
 };
