@@ -119,12 +119,15 @@ export interface RunningApp {
 }
 
 export namespace promises {
+    type AresResolver = Resolver;
     type AresSession = Session;
 
     import Dict = NodeJS.Dict;
 
     export class Resolver {
         readonly devices: Device[];
+
+        readonly delegate: AresResolver;
 
         constructor();
 

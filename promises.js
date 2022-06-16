@@ -16,6 +16,7 @@ class Resolver {
         this.load = promisify(delegate.load).bind(delegate);
         this.save = promisify(delegate.save).bind(delegate);
         this.modifyDeviceFile = promisify(delegate.modifyDeviceFile).bind(delegate);
+        this.delegate = delegate;
     }
 }
 
