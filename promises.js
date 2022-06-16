@@ -6,6 +6,7 @@ const {Resolver: AresResolver, Session: AresSession} = require('@webosose/ares-c
 const AresLuna = require('@webosose/ares-cli/lib/base/luna');
 const AresLauncher = require('@webosose/ares-cli/lib/launch');
 const AresInstaller = require('@webosose/ares-cli/lib/install');
+const AresCliAppData = require('@webosose/ares-cli/lib/base/cli-appdata');
 
 class Resolver {
     constructor() {
@@ -57,6 +58,22 @@ class Session {
                 }
             });
         })
+    }
+}
+
+class CliAppData {
+    static instance;
+
+    constructor(delegate) {
+        this.delegate = delegate;
+    }
+
+    static getInstance() {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new CliAppData(AresCliAppData());
+        return this.instance;
     }
 }
 

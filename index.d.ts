@@ -100,7 +100,31 @@ export class Luna {
 export class CliAppData {
     constructor();
 
-    getPath(next: (error: any, result: string) => void): void;
+    getPath(next?: (error: any, result: string) => void): string;
+
+    getAppDir(next?: (error: any, result: string) => void): void;
+
+    getConfig(next?: (error: any, result: any) => void): any;
+
+    compareProfile(query: string, next?: (error: any, result: boolean) => void): void;
+
+    compareProfileSync(query: string): boolean;
+
+    getDeviceList(renewal: boolean, next?: (error: any, result: any) => void): Device[];
+
+    getCommandService(next?: (error: any, result: any) => void): any;
+
+    setDeviceList(deviceListData: Device[], next?: (error: any, result: Device[]) => void): Device[];
+
+    setConfig(configData: any, next?: (error: any, result: any) => void): any;
+
+    setTemplate(templateData: any, next?: (error: any, result: any) => void): any;
+
+    setKey(keyPath: string, next?: (error: any, result: any) => void): string;
+
+    setQuery(queryBasePath: string, next?: (error: any, result: any) => void): string;
+
+    resetDeviceList(next?: (error: any, result: Device[]) => void): Device[];
 }
 
 export interface PackageInfo {
@@ -156,12 +180,6 @@ export namespace promises {
         end(): this;
 
         static create(target: string): Promise<Session>;
-    }
-
-    export class CliAppData {
-        constructor();
-
-        getPath(): Promise<string>;
     }
 
     export class Luna {
