@@ -3,12 +3,13 @@
 import {Client} from 'ssh2';
 import {Readable, Writable} from 'stream';
 
-
 export type RunOutput = Writable | ((buf: Buffer) => void) | null;
 
-interface Callback<T> {
-    (error: Error, result: T): void;
+export interface Callback<T> {
+    (error?: Error, result?: T): void;
 }
+
+export type CallbackReturn<T> = T | NodeJS.Immediate | void;
 
 export class Resolver {
     readonly devices: Device[];
@@ -17,9 +18,9 @@ export class Resolver {
 
     load(next: (error: any, result: any) => void): void;
 
-    save(devicesData: Device[], next?: Callback<Device[]>): Device[] | NodeJS.Immediate ;
+    save(devicesData: Device[], next?: Callback<Device[]>): CallbackReturn<Device[]>;
 
-    modifyDeviceFile(op: 'add' | 'modify' | 'default' | 'remove', device: Partial<DeviceEditSpec>, next?: Callback<Device[]>): Device[] | NodeJS.Immediate;
+    modifyDeviceFile(op: 'add' | 'modify' | 'default' | 'remove', device: Partial<DeviceEditSpec>, next?: Callback<Device[]>): CallbackReturn<Device[]>;
 }
 
 type AresResolver = Resolver;
