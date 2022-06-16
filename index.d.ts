@@ -6,6 +6,10 @@ import {Readable, Writable} from 'stream';
 
 export type RunOutput = Writable | ((buf: Buffer) => void) | null;
 
+interface Callback<T> {
+    (error: Error, result: T): void;
+}
+
 export class Resolver {
     readonly devices: Device[];
 
@@ -13,9 +17,9 @@ export class Resolver {
 
     load(next: (error: any, result: any) => void): void;
 
-    save(devicesData, next: (error: any, result: Device[]) => void): void;
+    save(devicesData: Device[], next?: Callback<Device[]>): Device[] | NodeJS.Immediate ;
 
-    modifyDeviceFile(op: 'add' | 'modify' | 'default' | 'remove', device: Partial<DeviceEditSpec>, next: (error: any, result: Device[]) => void): void;
+    modifyDeviceFile(op: 'add' | 'modify' | 'default' | 'remove', device: Partial<DeviceEditSpec>, next?: Callback<Device[]>): Device[] | NodeJS.Immediate;
 }
 
 export class Session {
@@ -183,11 +187,41 @@ export namespace promises {
         static create(target: string): Promise<Session>;
     }
 
+    export class CliAppData {
+
+        getPath(): Promise<string>;
+
+        getAppDir(): Promise<string>;
+
+        getConfig(): Promise<any>;
+
+        compareProfile(query: string): Promise<boolean>;
+
+        getDeviceList(renewal: boolean): Promise<Device[]>;
+
+        getCommandService(): Promise<any>;
+
+        setDeviceList(deviceListData: Device[]): Promise<Device[]>;
+
+        setConfig(configData: any): Promise<any>;
+
+        setTemplate(templateData: any): Promise<any>;
+
+        setKey(keyPath: string): Promise<string>;
+
+        setQuery(queryBasePath: string): Promise<string>;
+
+        resetDeviceList(): Promise<Device[]>;
+
+        static getInstance(): CliAppData;
+
+    }
+
     export class Luna {
 
-        static send(options: LunaOptions, launch: LunaAddress, params: any): Promise<any>;
+        static send<Params, Response>(options: LunaOptions, launch: LunaAddress, params: Params): Promise<Response>;
 
-        static sendWithoutErrorHandle(options: LunaOptions, launch: LunaAddress, params: any): Promise<any>;
+        static sendWithoutErrorHandle<Params, Response>(options: LunaOptions, launch: LunaAddress, params: Params): Promise<Response>;
     }
 
     export class Installer {

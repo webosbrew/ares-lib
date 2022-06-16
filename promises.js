@@ -7,6 +7,7 @@ const AresLuna = require('@webosose/ares-cli/lib/base/luna');
 const AresLauncher = require('@webosose/ares-cli/lib/launch');
 const AresInstaller = require('@webosose/ares-cli/lib/install');
 const AresCliAppData = require('@webosose/ares-cli/lib/base/cli-appdata');
+const {Device} = require("./index");
 
 class Resolver {
     constructor() {
@@ -66,6 +67,18 @@ class CliAppData {
 
     constructor(delegate) {
         this.delegate = delegate;
+        this.getPath = promisify(delegate.getPath);
+        this.getAppDir = promisify(delegate.getAppDir);
+        this.getConfig = promisify(delegate.getConfig);
+        this.compareProfile = promisify(delegate.compareProfile);
+        this.getDeviceList = promisify(delegate.getDeviceList);
+        this.getCommandService = promisify(delegate.getCommandService);
+        this.setDeviceList = promisify(delegate.setDeviceList);
+        this.setConfig = promisify(delegate.setConfig);
+        this.setTemplate = promisify(delegate.setTemplate);
+        this.setKey = promisify(delegate.setKey);
+        this.setQuery = promisify(delegate.setQuery);
+        this.resetDeviceList = promisify(delegate.resetDeviceList);
     }
 
     static getInstance() {
