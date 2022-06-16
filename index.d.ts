@@ -97,35 +97,36 @@ export class Luna {
 
 }
 
-export class CliAppData {
-    constructor();
+export interface CliAppDataType {
 
-    getPath(next?: (error: any, result: string) => void): string;
+    getPath(next?: (error: any, result: string) => void): string | NodeJS.Immediate;
 
-    getAppDir(next?: (error: any, result: string) => void): void;
+    getAppDir(next?: (error: any, result: string) => void): void | NodeJS.Immediate;
 
-    getConfig(next?: (error: any, result: any) => void): any;
+    getConfig(next?: (error: any, result: any) => void): any | NodeJS.Immediate;
 
     compareProfile(query: string, next?: (error: any, result: boolean) => void): void;
 
     compareProfileSync(query: string): boolean;
 
-    getDeviceList(renewal: boolean, next?: (error: any, result: any) => void): Device[];
+    getDeviceList(renewal: boolean, next?: (error: any, result: any) => void): Device[] | NodeJS.Immediate;
 
-    getCommandService(next?: (error: any, result: any) => void): any;
+    getCommandService(next?: (error: any, result: any) => void): any | NodeJS.Immediate;
 
-    setDeviceList(deviceListData: Device[], next?: (error: any, result: Device[]) => void): Device[];
+    setDeviceList(deviceListData: Device[], next?: (error: any, result: Device[]) => void): Device[] | NodeJS.Immediate;
 
-    setConfig(configData: any, next?: (error: any, result: any) => void): any;
+    setConfig(configData: any, next?: (error: any, result: any) => void): any | NodeJS.Immediate;
 
-    setTemplate(templateData: any, next?: (error: any, result: any) => void): any;
+    setTemplate(templateData: any, next?: (error: any, result: any) => void): any | NodeJS.Immediate;
 
-    setKey(keyPath: string, next?: (error: any, result: any) => void): string;
+    setKey(keyPath: string, next?: (error: any, result: any) => void): string | NodeJS.Immediate;
 
-    setQuery(queryBasePath: string, next?: (error: any, result: any) => void): string;
+    setQuery(queryBasePath: string, next?: (error: any, result: any) => void): string | NodeJS.Immediate;
 
-    resetDeviceList(next?: (error: any, result: Device[]) => void): Device[];
+    resetDeviceList(next?: (error: any, result: Device[]) => void): Device[] | NodeJS.Immediate;
 }
+
+export function CliAppData(): CliAppDataType;
 
 export interface PackageInfo {
     id: string;
