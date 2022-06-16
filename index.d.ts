@@ -22,6 +22,8 @@ export class Resolver {
     modifyDeviceFile(op: 'add' | 'modify' | 'default' | 'remove', device: Partial<DeviceEditSpec>, next?: Callback<Device[]>): Device[] | NodeJS.Immediate;
 }
 
+type AresResolver = Resolver;
+
 export class Session {
     readonly ssh: Client;
 
@@ -37,6 +39,8 @@ export class Session {
 
     end(): this;
 }
+
+type AresSession = Session;
 
 export interface Device {
     name: string;
@@ -148,8 +152,6 @@ export interface RunningApp {
 }
 
 export namespace promises {
-    type AresResolver = Resolver;
-    type AresSession = Session;
 
     import Dict = NodeJS.Dict;
 
