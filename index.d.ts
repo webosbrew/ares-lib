@@ -69,7 +69,7 @@ export interface LunaOptions {
 
 export interface LunaAddress {
     service: string;
-    folder: string;
+    folder?: string;
     method: string;
 }
 
