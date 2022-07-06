@@ -71,7 +71,14 @@ export interface LunaAddress {
     service: string;
     folder: string;
     method: string;
-    returnValue: string;
+}
+
+export namespace Luna {
+    function send(options: LunaOptions, addr: LunaAddress, param: any,
+                  onResponse: (response: any, next: Callback<Device[]>) => void, next?: Callback<Device[]>);
+
+    function sendWithoutErrorHandle(options: LunaOptions, addr: LunaAddress, param: any,
+                                    onResponse: (response: any, next: Callback<Device[]>) => void, next?: Callback<Device[]>);
 }
 
 export interface InstallOptions {
